@@ -1,0 +1,20 @@
+from statsmodels.tsa.arima.model import ARIMA
+
+# Fit an ARIMA model
+model = ARIMA(sales_by_date, order=(5, 1, 0))  # (p, d, q) parameters
+model_fit = model.fit()
+
+# Forecast future sales (next 12 periods, e.g., months)
+forecast = model_fit.forecast(steps=12)
+
+# Plot the original data and the forecasted data
+plt.plot(sales_by_date.index, sales_by_date['sales_amount'], label='Actual Sales')
+plt.plot(pd.date_range(start=sales_by_date.index[-1], periods=13, freq='M')[1:], forecast, label='Forecasted Sales', color='red')
+plt.legend()
+plt.title('Sales Forecasting using ARIMA')
+plt.xlabel('Date')
+plt.ylabel('Sales Amount')
+plt.show()
+
+# Print the forecasted values
+print(forecast)
