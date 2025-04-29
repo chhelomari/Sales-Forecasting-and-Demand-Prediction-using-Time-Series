@@ -1,0 +1,9 @@
+import statsmodels.api as sm
+import matplotlib.pyplot as plt
+
+# Perform time series decomposition
+decomposition = sm.tsa.seasonal_decompose(sales_by_date, model='multiplicative', period=30)
+
+# Plot the decomposition
+decomposition.plot()
+plt.show()
