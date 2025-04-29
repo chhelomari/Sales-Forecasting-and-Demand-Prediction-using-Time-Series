@@ -1,0 +1,17 @@
+from fbprophet import Prophet
+
+# Prepare the data for Prophet
+prophet_data = sales_by_date.reset_index()
+prophet_data.rename(columns={'date': 'ds', 'sales_amount': 'y'}, inplace=True)
+
+# Initialize and fit the model
+model = Prophet()
+model.fit(prophet_data)
+
+# Make future predictions (next 12 periods)
+future = model.make_future_dataframe(prophet_data, periods=12, freq='M')
+forecast = model.predict(future)
+
+# Plot the forecast
+model.plot(forecast)
+plt.show()
