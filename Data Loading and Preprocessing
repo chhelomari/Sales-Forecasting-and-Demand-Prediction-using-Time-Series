@@ -1,0 +1,10 @@
+import pandas as pd
+
+# Load the data (CSV, database, or other sources)
+sales_data = pd.read_csv('sales_data.csv')
+
+# Convert the 'date' column to datetime
+sales_data['date'] = pd.to_datetime(sales_data['date'])
+
+# Preview the data
+print(sales_data.head())
