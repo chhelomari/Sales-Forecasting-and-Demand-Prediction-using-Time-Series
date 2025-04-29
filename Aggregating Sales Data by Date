@@ -1,0 +1,8 @@
+# Group data by date and sum the sales_amount
+sales_by_date = sales_data.groupby('date')['sales_amount'].sum().reset_index()
+
+# Set the 'date' column as the index
+sales_by_date.set_index('date', inplace=True)
+
+# Preview the data
+print(sales_by_date.head())
